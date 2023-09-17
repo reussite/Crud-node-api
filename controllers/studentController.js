@@ -20,8 +20,9 @@ module.exports = {
         newStudent,
       });
     } catch (error) {
-      //res.status(400).json({message: "Erreur d'enrégistrement d'un étudient"});
-      console.log(error);
+      res.status(400).json({
+        message: "Erreur d'enrégistrement d'un étudient",
+      });
     }
   },
   updateStudent: async (req, res) => {
@@ -52,8 +53,7 @@ module.exports = {
         updateStudentData,
       });
     } catch (error) {
-      //res.status(400).json({message: "Erreur de mise à jour de l'étudient."});
-      console.log(error);
+      res.status(400).json({ message: "Erreur de mise à jour de l'étudient." });
     }
   },
 };
