@@ -11,10 +11,14 @@ datasource db {
 }
 
 model Account {
-  id       Int    @id @default(autoincrement())
-  name     String
-  password String
-  role     Role   @default(SUPERVISOR)
+  id         Int      @id @default(autoincrement())
+  name       String
+  firstName  String
+  email      String   @unique
+  password   String
+  role       Role     @default(SUPERVISOR)
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
 }
 
 enum Role {
@@ -27,7 +31,7 @@ model Student {
   id           Int      @id @default(autoincrement())
   name         String
   firstName    String
-  email        String
+  email        String   @unique
   birthday     DateTime
   nationnality String
   contact      String?
@@ -38,23 +42,31 @@ model Student {
   studyId      Int?
   Year         Year?    @relation(fields: [yearId], references: [id])
   yearId       Int?
+  created_at   DateTime @default(now())
+  updated_at   DateTime @updatedAt
 }
 
 model Files {
-  id       Int       @id @default(autoincrement())
-  path     String
-  filename String
-  students Student[]
+  id         Int       @id @default(autoincrement())
+  path       String
+  filename   String
+  students   Student[]
+  created_at DateTime  @default(now())
+  updated_at DateTime  @updatedAt
 }
 
 model Study {
-  id       Int       @id @default(autoincrement())
-  name     String
-  students Student[]
+  id         Int       @id @default(autoincrement())
+  name       String
+  students   Student[]
+  created_at DateTime  @default(now())
+  updated_at DateTime  @updatedAt
 }
 
 model Year {
   id          Int       @id @default(autoincrement())
   school_year String
   students    Student[]
+  created_at  DateTime  @default(now())
+  updated_at  DateTime  @updatedAt
 }
