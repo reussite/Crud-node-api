@@ -10,7 +10,20 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
+model Account {
+  id       Int    @id @default(autoincrement())
+  name     String
+  password String
+  role     Role   @default(SUPERVISOR)
+}
+
+enum Role {
+  SUPERVISOR
+  ADMIN
+  STUDENT
+}
+
+model Student {
   id           Int      @id @default(autoincrement())
   name         String
   firstName    String
@@ -19,8 +32,6 @@ model User {
   nationnality String
   contact      String?
   phone        String?
-  password     String
-  role         Role
   Files        Files?   @relation(fields: [filesId], references: [id])
   filesId      Int?
   Study        Study?   @relation(fields: [studyId], references: [id])
@@ -29,27 +40,21 @@ model User {
   yearId       Int?
 }
 
-enum Role {
-  SUPERVISOR
-  STUDENT
-  ADMIN
-}
-
 model Files {
-  id       Int    @id @default(autoincrement())
+  id       Int       @id @default(autoincrement())
   path     String
   filename String
-  users    User[]
+  students Student[]
 }
 
 model Study {
-  id    Int    @id @default(autoincrement())
-  name  String
-  users User[]
+  id       Int       @id @default(autoincrement())
+  name     String
+  students Student[]
 }
 
 model Year {
-  id          Int    @id @default(autoincrement())
+  id          Int       @id @default(autoincrement())
   school_year String
-  users       User[]
+  students    Student[]
 }
