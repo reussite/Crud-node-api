@@ -16,12 +16,12 @@ module.exports = {
         phone: phone,
       });
       res.status(200).json({
-        message: "Enrégistrement d'un étudient réussi.",
+        message: "Student profil insertion successfuly.",
         newStudent,
       });
     } catch (error) {
       res.status(400).json({
-        message: "Erreur d'enrégistrement d'un étudient",
+        message: "Student profil insertion failed.",
       });
     }
   },
@@ -49,11 +49,11 @@ module.exports = {
       });
 
       res.status(200).json({
-        message: "Mise à jour  de l'étudiant réussie",
+        message: "",
         updateStudentData,
       });
     } catch (error) {
-      res.status(400).json({ message: "Erreur de mise à jour de l'étudient." });
+      res.status(400).json({ message: "Student update is failed." });
     }
   },
   findStudent: async (req, res) => {
