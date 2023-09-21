@@ -56,13 +56,20 @@ module.exports = {
       res.status(400).json({ message: "Erreur de mise à jour de l'étudient." });
     }
   },
-  findStudent: async(req, res)=>{
+  findStudent: async (req, res) => {
     try {
       const studentId = +req.params.studentId;
       const findStudentData = await studentModel.findUniquestudent(studentId);
-      res.status(200).json({message:'Etudiant trouvé :', findStudentData});
+      res.status(200).json({ message: "Etudiant trouvé :", findStudentData });
     } catch (error) {
-      
+      res.status(400).json({ message: "Etudient find successfully :", error });
     }
-  }
+  },
+  delectStudent: async (req, res) => {
+    try {
+      const studentId = +req.params.studentId;
+      const deleteStudentData = await studentModel.studentDelete(studentId);
+      res.status(200).json({ message: "Student deleted", deleteStudentData });
+    } catch (error) {}
+  },
 };
