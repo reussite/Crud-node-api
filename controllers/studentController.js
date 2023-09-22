@@ -3,11 +3,11 @@ const studentModel = require("../models/Student");
 module.exports = {
   createStudent: async (req, res) => {
     try {
-      const { name, firstName, email, birthday, nationnality, contact, phone } =
+      const { student_name, firstName, email, birthday, nationnality, contact, phone } =
         req.body;
 
       const newStudent = await studentModel.studentRegister({
-        name: name,
+        student_name: student_name,
         firstName: firstName,
         email: email,
         birthday: birthday,
@@ -30,7 +30,7 @@ module.exports = {
       const studentId = +req.params.id;
       console.log(studentId);
       const studentata = ({
-        name,
+        student_name,
         firstName,
         email,
         birthday,
@@ -39,7 +39,7 @@ module.exports = {
         phone,
       } = req.body);
       const updateStudentData = await studentModel.studentUpdate(studentId, {
-        name: name,
+        student_name: student_name,
         firstName: firstName,
         email: email,
         birthday: birthday,
