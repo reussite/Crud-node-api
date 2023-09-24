@@ -28,14 +28,12 @@ enum Role {
 }
 
 model Student {
-  id           Int      @id @default(autoincrement())
-  student_name         String
-  firstName    String
+  id           Int    @id @default(autoincrement())
+  student_name String
   email        String   @unique
   birthday     DateTime
   nationnality String
   contact      String?
-  phone        String?
   Files        Files?   @relation(fields: [filesId], references: [id])
   filesId      Int?
   Study        Study?   @relation(fields: [studyId], references: [id])
