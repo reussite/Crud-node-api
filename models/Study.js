@@ -18,9 +18,10 @@ module.exports = {
       where: { id: studyId },
     });
   },
-  findUniqueStudy: async (studyId) => {
+  findUniqueStudy: async (studyId, studyData) => {
     return prisma.study.findUnique({
       where: { id: studyId },
+      data: studyData
     });
   },
   getAllStudy: async () => {
