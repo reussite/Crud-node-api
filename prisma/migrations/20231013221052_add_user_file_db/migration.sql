@@ -1,0 +1,6 @@
+-- AlterTable
+ALTER TABLE `User` ADD COLUMN `filesId` INTEGER NULL,
+    MODIFY `password` VARCHAR(191) NULL;
+
+-- AddForeignKey
+ALTER TABLE `User` ADD CONSTRAINT `User_filesId_fkey` FOREIGN KEY (`filesId`) REFERENCES `Files`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;

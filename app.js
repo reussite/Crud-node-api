@@ -5,6 +5,7 @@ var logger = require("morgan");
 
 var usersRouter = require("./routes/users");
 var studentRouter = require("./routes/student");
+var authRouter = require("./routes/auth");
 var app = express();
 
 app.use(logger("dev"));
@@ -15,5 +16,6 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/users", usersRouter);
 app.use("/api/students", studentRouter);
+app.use("/api/auth", authRouter);
 
 module.exports = app;
